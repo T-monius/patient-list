@@ -18,4 +18,18 @@ router.get("/", (req, res) => {
   }
 });
 
+router.post("/:id/starred/:isStarred", (req, res) => {
+  const { params: { id, isStarred } } = req
+  const toggleInt = isStarred === 'true' ? 0 : 1
+
+  try {
+    const info = db
+      .prepare(`UPDATE patients SET starred = ? WHERE id = ?`)
+      .run(toggleInt, id)
+    res.json({ status: 200, info })
+  } catch (e) {
+    res.status(500).json({ message: e?.message });
+  }
+});
+
 export default router;
