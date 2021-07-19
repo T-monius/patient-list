@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   try {
     const rows = db
-      .prepare(`SELECT id, mrn, name, dob, starred FROM patients`)
+      .prepare(`SELECT id, mrn, name, dob, starred FROM patients ORDER BY starred`)
       .all();
     // sqlite doesn't have a boolean type, so map 1/0 to true/false for the API
     const patients = rows.map((row) => {

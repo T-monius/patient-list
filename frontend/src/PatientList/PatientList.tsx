@@ -18,9 +18,8 @@ export const PatientList: FunctionComponent = () => {
     (async function getPatients() {
       try {
         const resp = await axios.get("/api/patients");
-        // Can sort response here, but I'm getting type errors I'm not familiar with for not
-        // knowing Typescript.
-        setPatients(resp.data);
+        // Reversing here because the DB query didn't seem to respond to ORDER BY ... _DESC_
+        setPatients(resp.data.reverse());
       } catch (e) {
         console.error(e?.response?.data?.message);
       }

@@ -55,7 +55,7 @@ Running list
 3. Order table columns by 'starred'                   **blocked**
   - NOTE: Attempt to order DESC in SQL query ineffective
     - `SELECT id, mrn, name, dob, starred FROM patients ORDER BY starred DESC`
-  - Attempt to sort in Typescript ineffective because I don't know it
+  - _Reversed client side after ordering_
 4. Create `onClick` for table column                  **blocked**
   1. Parse event for id of column (e.g. id of parent)
   2. Make axios call
